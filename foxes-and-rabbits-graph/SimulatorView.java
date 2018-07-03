@@ -5,7 +5,7 @@ import java.awt.Color;
  * views.
  * 
  * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * @version 2016.03.18
  */
 public interface SimulatorView
 {
@@ -14,7 +14,7 @@ public interface SimulatorView
      * @param animalClass The animal's Class object.
      * @param color The color to be used for the given class.
      */
-    void setColor(Class animalClass, Color color);
+    void setColor(Class<?> animalClass, Color color);
 
     /**
      * Determine whether the simulation should continue to run.

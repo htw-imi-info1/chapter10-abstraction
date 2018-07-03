@@ -9,7 +9,7 @@ import java.awt.Color;
  * containing rabbits and foxes.
  * 
  * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @version 2016.02.29 (2)
  */
 public class Simulator
 {
@@ -54,7 +54,7 @@ public class Simulator
             width = DEFAULT_WIDTH;
         }
         
-        animals = new ArrayList<Animal>();
+        animals = new ArrayList<>();
         field = new Field(depth, width);
 
         // Create a view of the state of each location in the field.
@@ -84,6 +84,7 @@ public class Simulator
     {
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
+            // delay(60);   // uncomment this to run more slowly
         }
     }
     
@@ -97,7 +98,7 @@ public class Simulator
         step++;
 
         // Provide space for newborn animals.
-        List<Animal> newAnimals = new ArrayList<Animal>();        
+        List<Animal> newAnimals = new ArrayList<>();        
         // Let all rabbits act.
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
             Animal animal = it.next();
@@ -147,6 +148,20 @@ public class Simulator
                 }
                 // else leave the location empty.
             }
+        }
+    }
+    
+    /**
+     * Pause for a given time.
+     * @param millisec  The time to pause for, in milliseconds
+     */
+    private void delay(int millisec)
+    {
+        try {
+            Thread.sleep(millisec);
+        }
+        catch (InterruptedException ie) {
+            // wake up
         }
     }
 }

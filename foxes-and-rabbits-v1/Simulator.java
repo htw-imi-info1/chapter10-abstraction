@@ -5,11 +5,11 @@ import java.util.Iterator;
 import java.awt.Color;
 
 /**
- * A simple predator-prey simulator, based on a rectangular field
- * containing rabbits and foxes.
+ * A simple predator-prey simulator, based on a rectangular field containing 
+ * rabbits and foxes.
  * 
  * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @version 2016.02.29
  */
 public class Simulator
 {
@@ -20,10 +20,10 @@ public class Simulator
     private static final int DEFAULT_DEPTH = 80;
     // The probability that a fox will be created in any given grid position.
     private static final double FOX_CREATION_PROBABILITY = 0.02;
-    // The probability that a rabbit will be created in any given grid position.
+    // The probability that a rabbit will be created in any given position.
     private static final double RABBIT_CREATION_PROBABILITY = 0.08;    
 
-    // Lists of animals in the field. Separate lists are kept for ease of iteration.
+    // Lists of animals in the field.
     private List<Rabbit> rabbits;
     private List<Fox> foxes;
     // The current state of the field.
@@ -49,14 +49,14 @@ public class Simulator
     public Simulator(int depth, int width)
     {
         if(width <= 0 || depth <= 0) {
-            System.out.println("The dimensions must be greater than zero.");
+            System.out.println("The dimensions must be >= zero.");
             System.out.println("Using default values.");
             depth = DEFAULT_DEPTH;
             width = DEFAULT_WIDTH;
         }
         
-        rabbits = new ArrayList<Rabbit>();
-        foxes = new ArrayList<Fox>();
+        rabbits = new ArrayList<>();
+        foxes = new ArrayList<>();
         field = new Field(depth, width);
 
         // Create a view of the state of each location in the field.
@@ -69,8 +69,8 @@ public class Simulator
     }
     
     /**
-     * Run the simulation from its current state for a reasonably long period,
-     * (4000 steps).
+     * Run the simulation from its current state for a reasonably long 
+     * period (4000 steps).
      */
     public void runLongSimulation()
     {
@@ -78,28 +78,28 @@ public class Simulator
     }
     
     /**
-     * Run the simulation from its current state for the given number of steps.
+     * Run the simulation for the given number of steps.
      * Stop before the given number of steps if it ceases to be viable.
      * @param numSteps The number of steps to run for.
      */
     public void simulate(int numSteps)
     {
-        for(int step = 1; step <= numSteps && view.isViable(field); step++) {
+        for(int step=1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
+            // delay(60);   // uncomment this to run more slowly
         }
     }
     
     /**
-     * Run the simulation from its current state for a single step.
-     * Iterate over the whole field updating the state of each
-     * fox and rabbit.
+     * Run the simulation from its current state for a single step. Iterate
+     * over the whole field updating the state of each fox and rabbit.
      */
     public void simulateOneStep()
     {
         step++;
 
         // Provide space for newborn rabbits.
-        List<Rabbit> newRabbits = new ArrayList<Rabbit>();        
+        List<Rabbit> newRabbits = new ArrayList<>();        
         // Let all rabbits act.
         for(Iterator<Rabbit> it = rabbits.iterator(); it.hasNext(); ) {
             Rabbit rabbit = it.next();
@@ -110,7 +110,7 @@ public class Simulator
         }
         
         // Provide space for newborn foxes.
-        List<Fox> newFoxes = new ArrayList<Fox>();        
+        List<Fox> newFoxes = new ArrayList<>();        
         // Let all foxes act.
         for(Iterator<Fox> it = foxes.iterator(); it.hasNext(); ) {
             Fox fox = it.next();
@@ -162,6 +162,20 @@ public class Simulator
                 }
                 // else leave the location empty.
             }
+        }
+    }
+    
+    /**
+     * Pause for a given time.
+     * @param millisec  The time to pause for, in milliseconds
+     */
+    private void delay(int millisec)
+    {
+        try {
+            Thread.sleep(millisec);
+        }
+        catch (InterruptedException ie) {
+            // wake up
         }
     }
 }

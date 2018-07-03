@@ -1,10 +1,12 @@
 import java.util.Random;
 
 /**
- * Provide control over the randomization of the simulation.
+ * Provide control over the randomization of the simulation. By using the shared, fixed-seed 
+ * randomizer, repeated runs will perform exactly the same (which helps with testing). Set 
+ * 'useShared' to false to get different random behaviour every time.
  * 
  * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @version 2016.02.29
  */
 public class Randomizer
 {
@@ -38,8 +40,7 @@ public class Randomizer
     
     /**
      * Reset the randomization.
-     * This will have no effect if randomization is not through
-     * a shared Random generator.
+     * This will have no effect if randomization is not through a shared Random generator.
      */
     public static void reset()
     {

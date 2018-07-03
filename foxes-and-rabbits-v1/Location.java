@@ -2,7 +2,7 @@
  * Represent a location in a rectangular grid.
  * 
  * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @version 2016.02.29
  */
 public class Location
 {

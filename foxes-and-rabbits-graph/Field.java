@@ -9,7 +9,7 @@ import java.util.Random;
  * Each position is able to store a single animal.
  * 
  * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @version 2016.02.29
  */
 public class Field
 {
@@ -121,7 +121,7 @@ public class Field
      */
     public List<Location> getFreeAdjacentLocations(Location location)
     {
-        List<Location> free = new LinkedList<Location>();
+        List<Location> free = new LinkedList<>();
         List<Location> adjacent = adjacentLocations(location);
         for(Location next : adjacent) {
             if(getObjectAt(next) == null) {
@@ -162,7 +162,7 @@ public class Field
     {
         assert location != null : "Null location passed to adjacentLocations";
         // The list of locations to be returned.
-        List<Location> locations = new LinkedList<Location>();
+        List<Location> locations = new LinkedList<>();
         if(location != null) {
             int row = location.getRow();
             int col = location.getCol();

@@ -10,7 +10,7 @@ import java.util.Map;
  * Colors for each type of species can be defined using the setColor method.
  * 
  * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * @version 2016.03.18
  */
 public class GridView extends JFrame implements SimulatorView
 {
@@ -26,7 +26,7 @@ public class GridView extends JFrame implements SimulatorView
     private FieldView fieldView;
     
     // A map for storing colors for participants in the simulation
-    private Map<Class, Color> colors;
+    private Map<Class<?>, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
 
@@ -38,7 +38,7 @@ public class GridView extends JFrame implements SimulatorView
     public GridView(int height, int width)
     {
         stats = new FieldStats();
-        colors = new HashMap<Class, Color>();
+        colors = new HashMap<>();
 
         setTitle("Fox and Rabbit Simulation");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
@@ -61,7 +61,7 @@ public class GridView extends JFrame implements SimulatorView
      * @param animalClass The animal's Class object.
      * @param color The color to be used for the given class.
      */
-    public void setColor(Class animalClass, Color color)
+    public void setColor(Class<?> animalClass, Color color)
     {
         colors.put(animalClass, color);
     }
@@ -69,7 +69,7 @@ public class GridView extends JFrame implements SimulatorView
     /**
      * @return The color to be used for a given class of animal.
      */
-    private Color getColor(Class animalClass)
+    private Color getColor(Class<?> animalClass)
     {
         Color col = colors.get(animalClass);
         if(col == null) {
@@ -101,8 +101,9 @@ public class GridView extends JFrame implements SimulatorView
             for(int col = 0; col < field.getWidth(); col++) {
                 Object animal = field.getObjectAt(row, col);
                 if(animal != null) {
-                    stats.incrementCount(animal.getClass());
-                    fieldView.drawMark(col, row, getColor(animal.getClass()));
+                    Class<?> cls = animal.getClass();
+                    stats.incrementCount(cls);
+                    fieldView.drawMark(col, row, getColor(cls));
                 }
                 else {
                     fieldView.drawMark(col, row, EMPTY_COLOR);
@@ -129,6 +130,7 @@ public class GridView extends JFrame implements SimulatorView
      */
     public void reset()
     {
+        stats.reset();
     }
     
     /**

@@ -7,7 +7,7 @@ import java.util.HashMap;
  * for any class of object that is found within the field.
  * 
  * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @version 2016.02.29
  */
 public class FieldStats
 {
@@ -23,7 +23,7 @@ public class FieldStats
     {
         // Set up a collection for counters for each type of animal that
         // we might find
-        counters = new HashMap<Class, Counter>();
+        counters = new HashMap<>();
         countsValid = false;
     }
 

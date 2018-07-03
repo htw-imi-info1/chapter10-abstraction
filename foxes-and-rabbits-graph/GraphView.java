@@ -9,7 +9,7 @@ import java.util.*;
  * animals. If further animals are introduced, they will not currently be displayed.
  * 
  * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * @version 2016.03.18
  */
 public class GraphView implements SimulatorView
 {
@@ -21,27 +21,24 @@ public class GraphView implements SimulatorView
     private static JLabel countLabel;
 
     // The classes being tracked by this view
-    private Set<Class> classes;
+    private Set<Class<?>> classes;
     // A map for storing colors for participants in the simulation
-    private Map<Class, Color> colors;
+    private Map<Class<?>, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
 
     /**
      * Constructor.
      * 
-     * @param width The width of the plotter window (in pixles).
-     * @param height The height of the plotter window (in pixles).
+     * @param width The width of the plotter window (in pixels).
+     * @param height The height of the plotter window (in pixels).
      * @param startMax The initial maximum value for the y axis.
-     * @param world The world object.
-     * @param class1 The first class to be plotted.
-     * @param width The second class to be plotted.
      */
     public GraphView(int width, int height, int startMax)
     {
         stats = new FieldStats();
-        classes = new HashSet<Class>();
-        colors = new HashMap<Class, Color>();
+        classes = new HashSet<>();
+        colors = new HashMap<>();
 
         if (frame == null) {
             frame = makeFrame(width, height, startMax);
@@ -58,7 +55,7 @@ public class GraphView implements SimulatorView
      * @param animalClass The animal's Class object.
      * @param color The color to be used for the given class.
      */
-    public void setColor(Class animalClass, Color color)
+    public void setColor(Class<?> animalClass, Color color)
     {
         colors.put(animalClass, color);
         classes = colors.keySet();
@@ -92,6 +89,7 @@ public class GraphView implements SimulatorView
      */
     public void reset()
     {
+        stats.reset();
         graph.newRun();
     }
     
@@ -174,9 +172,9 @@ public class GraphView implements SimulatorView
         public void update(int step, Field field, FieldStats stats)
         {
             if (classes.size() >= 2) {
-                Iterator<Class> it = classes.iterator();
-                Class class1 = it.next();
-                Class class2 = it.next();
+                Iterator<Class<?>> it = classes.iterator();
+                Class<?> class1 = it.next();
+                Class<?> class2 = it.next();
 
                 stats.reset();
                 int count1 = stats.getPopulationCount(field, class1);
@@ -213,7 +211,7 @@ public class GraphView implements SimulatorView
                 g.drawLine(width-3, lastVal2, width-2, y);
                 lastVal2 = y;
 
-                repaintNow();
+                repaint();
 
                 stepLabel.setText("" + step);
                 countLabel.setText(stats.getPopulationDetails(field));
@@ -250,17 +248,9 @@ public class GraphView implements SimulatorView
         }
 
         /**
-         * Cause immediate update of the panel.
-         */
-        public void repaintNow()
-        {
-            paintImmediately(0, 0, graphImage.getWidth(), graphImage.getHeight());
-        }
-
-        /**
          * Clear the image on this panel.
          */
-        public void clearImage()
+        final public void clearImage()
         {
             Graphics g = graphImage.getGraphics();
             g.setColor(Color.WHITE);
@@ -300,8 +290,6 @@ public class GraphView implements SimulatorView
          */
         public void paintComponent(Graphics g)
         {
-            Dimension size = getSize();
-            //g.clearRect(0, 0, size.width, size.height);
             if(graphImage != null) {
                 g.drawImage(graphImage, 0, 0, null);
             }

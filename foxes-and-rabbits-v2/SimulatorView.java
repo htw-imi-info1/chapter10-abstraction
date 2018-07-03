@@ -12,7 +12,7 @@ import java.util.Map;
  * setColor method.
  * 
  * @author David J. Barnes and Michael Kölling
- * @version 2011.07.31
+ * @version 2016.02.29
  */
 public class SimulatorView extends JFrame
 {
@@ -40,7 +40,7 @@ public class SimulatorView extends JFrame
     public SimulatorView(int height, int width)
     {
         stats = new FieldStats();
-        colors = new LinkedHashMap<Class, Color>();
+        colors = new LinkedHashMap<>();
 
         setTitle("Fox and Rabbit Simulation");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
