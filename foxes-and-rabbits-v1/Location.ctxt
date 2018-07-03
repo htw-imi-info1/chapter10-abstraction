@@ -1,35 +1,20 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=row\ col
 comment0.target=Location(int,\ int)
-comment0.text=\nRepresent\ a\ row\ and\ column.\n@param\ row\ The\ row.\n@param\ col\ The\ column.\n\n
+comment0.text=\n\ Represent\ a\ row\ and\ column.\n\ @param\ row\ The\ row.\n\ @param\ col\ The\ column.\n
 comment1.params=obj
-comment1.target=boolean\ equals(Object)
-comment1.text=\nImplement\ content\ equality.\n\n
-comment2.target=String\ toString()
-comment2.text=\nReturn\ a\ string\ of\ the\ form\ row,column\n@return\ A\ string\ representation\ of\ the\ location.\n\n
+comment1.target=boolean\ equals(java.lang.Object)
+comment1.text=\n\ Implement\ content\ equality.\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\n\ Return\ a\ string\ of\ the\ form\ row,column\n\ @return\ A\ string\ representation\ of\ the\ location.\n
+comment3.params=
 comment3.target=int\ hashCode()
-comment3.text=\nUse\ the\ top\ 16\ bits\ for\ the\ row\ value\ and\ the\ bottom\ for\nthe\ column.\ Except\ for\ very\ big\ grids,\ this\ should\ give\ a\nunique\ hash\ code\ for\ each\ (row,\ col)\ pair.\n@return\ A\ hashcode\ for\ the\ location.\n\n
+comment3.text=\n\ Use\ the\ top\ 16\ bits\ for\ the\ row\ value\ and\ the\ bottom\ for\n\ the\ column.\ Except\ for\ very\ big\ grids,\ this\ should\ give\ a\n\ unique\ hash\ code\ for\ each\ (row,\ col)\ pair.\n\ @return\ A\ hashcode\ for\ the\ location.\n
+comment4.params=
 comment4.target=int\ getRow()
-comment4.text=\n@return\ The\ row.\n\n
+comment4.text=\n\ @return\ The\ row.\n
+comment5.params=
 comment5.target=int\ getCol()
-comment5.text=\n@return\ The\ column.\n\n
+comment5.text=\n\ @return\ The\ column.\n
 numComments=6
-=======
-#BlueJ class context
-comment0.params=row\ col
-comment0.target=Location(int,\ int)
-comment0.text=\nRepresent\ a\ row\ and\ column.\n@param\ row\ The\ row.\n@param\ col\ The\ column.\n\n
-comment1.params=obj
-comment1.target=boolean\ equals(Object)
-comment1.text=\nImplement\ content\ equality.\n\n
-comment2.target=String\ toString()
-comment2.text=\nReturn\ a\ string\ of\ the\ form\ row,column\n@return\ A\ string\ representation\ of\ the\ location.\n\n
-comment3.target=int\ hashCode()
-comment3.text=\nUse\ the\ top\ 16\ bits\ for\ the\ row\ value\ and\ the\ bottom\ for\nthe\ column.\ Except\ for\ very\ big\ grids,\ this\ should\ give\ a\nunique\ hash\ code\ for\ each\ (row,\ col)\ pair.\n@return\ A\ hashcode\ for\ the\ location.\n\n
-comment4.target=int\ getRow()
-comment4.text=\n@return\ The\ row.\n\n
-comment5.target=int\ getCol()
-comment5.text=\n@return\ The\ column.\n\n
-numComments=6
->>>>>>> db253a37a46c46617c3e5f34039c9bf65a1d91f7

@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=width\ height\ startMax
 comment0.target=GraphView(int,\ int,\ int)
-comment0.text=\n\ Constructor.\n\ \n\ @param\ width\ The\ width\ of\ the\ plotter\ window\ (in\ pixles).\n\ @param\ height\ The\ height\ of\ the\ plotter\ window\ (in\ pixles).\n\ @param\ startMax\ The\ initial\ maximum\ value\ for\ the\ y\ axis.\n\ @param\ world\ The\ world\ object.\n\ @param\ class1\ The\ first\ class\ to\ be\ plotted.\n\ @param\ width\ The\ second\ class\ to\ be\ plotted.\n
+comment0.text=\n\ Constructor.\n\ \n\ @param\ width\ The\ width\ of\ the\ plotter\ window\ (in\ pixels).\n\ @param\ height\ The\ height\ of\ the\ plotter\ window\ (in\ pixels).\n\ @param\ startMax\ The\ initial\ maximum\ value\ for\ the\ y\ axis.\n
 comment1.params=animalClass\ color
 comment1.target=void\ setColor(java.lang.Class,\ java.awt.Color)
 comment1.text=\n\ Define\ a\ color\ to\ be\ used\ for\ a\ given\ class\ of\ animal.\n\ @param\ animalClass\ The\ animal's\ Class\ object.\n\ @param\ color\ The\ color\ to\ be\ used\ for\ the\ given\ class.\n
